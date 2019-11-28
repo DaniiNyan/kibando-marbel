@@ -1,4 +1,4 @@
-describe('Hero lcreation', () => {
+describe('Hero creation', () => {
   beforeEach(() => {
     cy.server()
     cy.route('GET', 'http://localhost:4200/api/heroes').as('heroes');
@@ -20,6 +20,7 @@ describe('Hero lcreation', () => {
         .eq(-1)
         .should('contain', 'Test');
     });
+
     cy.reload();
 
     cy.get('.heroes')

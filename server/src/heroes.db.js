@@ -66,7 +66,7 @@ function updateHero(hero) {
                 reject(new Error('Hero must exist'));
             }
 
-            client.query('UPDATE hero SET name = $1, category = $2 where id = $3', [hero.category, hero.name + 't', hero.id], function (err, result) {
+            client.query('UPDATE hero SET name = $1, category = $2 where id = $3', [hero.name, hero.category, hero.id], function (err, result) {
                 done();
                 if (err) {
                     return reject(err);
