@@ -1,10 +1,10 @@
 describe('Hero editing', () => {
-  beforeEach(() => {
-    const hero = {
-      id: 9999999999999999999,
-      name: 'Editing Hero'
-    };
+  const hero = {
+    id: 9999999999999999999,
+    name: 'Editing Hero'
+  };
 
+  beforeEach(() => {
     cy.server()
     cy.request('POST', 'http://localhost:4200/api/heroes', hero)
       .as('addHero');
@@ -43,5 +43,9 @@ describe('Hero editing', () => {
       .find('a')
       .eq(-1)
       .should('contain', 'Edited Hero');
+  });
+
+  afterEach(() => {
+    cy.request('DELETE', `http://localhost:4200/api/heroes/${hero.id}`);
   });
 });
