@@ -86,7 +86,7 @@ function saveHero(hero) {
                 reject(err)
             }
 
-            client.query('INSERT INTO (name, category) VALUES ($1, $2)', [hero.name, hero.category], function (err, result) {
+            client.query('INSERT INTO hero (name, category) VALUES ($1, $2)', [hero.name, hero.category], function (err, result) {
                 done();
                 if (err) {
                     return reject(err);

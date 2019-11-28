@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "tslint ./src/**/*.ts -t verbose",
     "start:server": "cd server && npm run start",
-    "start:db": "cd server/docker && docker-compose up",
-    "stop:db": "cd server/docker && docker-compose down",
+    "start:db": "cd server/docker && sudo docker-compose up",
+    "stop:db": "cd server/docker && sudo docker-compose down",
     "start": "ng serve --proxy-config proxy.config.js",
     "test": "ng test",
     "build": "ng build --prod",
