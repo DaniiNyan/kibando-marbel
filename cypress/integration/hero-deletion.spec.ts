@@ -2,7 +2,6 @@ describe('Hero editing', () => {
   let heroesListSize;
 
   const hero = {
-    id: 88888888888888888,
     name: 'Deleting Hero'
   };
 

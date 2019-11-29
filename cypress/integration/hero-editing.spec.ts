@@ -1,6 +1,5 @@
 describe('Hero editing', () => {
   const hero = {
-    id: 9999999999999999999,
     name: 'Editing Hero'
   };
 
@@ -20,7 +19,6 @@ describe('Hero editing', () => {
     }).as('addHeroes');
 
     cy.visit('http://localhost:4200/heroes');
-
   });
 
   it('should edit a hero', () => {
@@ -39,6 +37,8 @@ describe('Hero editing', () => {
         .click();
     });
 
+    // wait
+
     cy.get('.heroes')
       .find('a')
       .eq(-1)
@@ -46,6 +46,13 @@ describe('Hero editing', () => {
   });
 
   afterEach(() => {
-    cy.request('DELETE', `http://localhost:4200/api/heroes/${hero.id}`);
+    cy.get('.heroes')
+      .find('a')
+      .eq(-1)
+      .find('.badge').then($id => {
+        console.log($id);
+        const id = $id[0].innerHTML;
+        cy.request('DELETE', `http://localhost:4200/api/heroes/${id}`);
+      });
   });
 });

@@ -13,7 +13,7 @@ export class Hero {
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero[];
+  heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) { }
 
@@ -29,10 +29,7 @@ export class HeroesComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    const hero = {
-      id: this.heroes[this.heroes.length - 1].id++,
-      name
-    } as Hero;
+    const hero = { name } as Hero;
 
     this.heroService.addHero(hero).subscribe(() => {
       this.getHeroes();
